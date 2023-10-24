@@ -1,0 +1,6 @@
+# secret
+.env
+
+# compiled files
+dist/
+node_modules/
