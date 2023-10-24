@@ -33,22 +33,10 @@ class FaunaDataSource {
     }
 }
 
-export const books = [
-    {
-        title: 'The Awakening',
-        author: 'Kate Chopin',
-    },
-    {
-        title: 'City of Glass',
-        author: 'Paul Auster',
-    },
-];
-
 // Resolvers define how to fetch the types defined in your schema.
 // This resolver retrieves books from the "books" array above.
 const resolvers = {
     Query: {
-        books: () => books,
         getExercise: async (_, __, {dataSources}) => {
             return dataSources.faunaDB.getExercise("378901583609462864")
         }
@@ -56,22 +44,13 @@ const resolvers = {
 };
 
 export const typeDefs = gql`
-
-    "TODO: Remove this later"
-    type Book {
-        title: String
-        author: String
-    }
-
+    
     type Query {
         "Get all existing routines"
         allRoutines: [Routine!]!
         
         "Get exercise"
         getExercise: Exercise!
-        
-        "REMOVE"
-        books: [Book]
     }
 
     "A routine is a group of exercises that are done one after the other"
